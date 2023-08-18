@@ -1,0 +1,7 @@
+const ENV = process.env.NODE_ENV || 'development';
+
+module.exports = {
+  config: 'config/database.json',
+  'migrations-path': 'db-migrations/migrations',
+  'seeders-path': 'db-migrations/seeders'
+};

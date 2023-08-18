@@ -1,0 +1,25 @@
+{
+  "name": "typescript.express.inversify.sequelize",
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "src/*"
+  ],
+  "scripts": {
+    "dev": "ts-node -r tsconfig-paths/register src/api/server.ts",
+    "db:migrate": "sequelize-cli --options-path .sequelizerc db:migrate",
+    "db:migrate:undo": "sequelize-cli --options-path .sequelizerc db:migrate:undo",
+    "migration:create": "sequelize-cli migration:generate --name",
+    "install::all": "npm run install::shared_libary && npm run install::api",
+    "install::shared_libary": "npm install ./src/shared-library",
+    "install::api": "npm install ./src/api",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "api": "^1.0.0",
+    "sequelize-cli": "^6.6.1",
+    "shared-library": "^1.0.0"
+  }
+}
