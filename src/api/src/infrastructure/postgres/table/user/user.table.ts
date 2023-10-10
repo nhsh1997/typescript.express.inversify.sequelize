@@ -44,9 +44,14 @@ export class UserPostgresTable extends BasePostgresTable {
                 allowNull: false,
                 unique: true,
             },
+            username: {
+                type: STRING,
+                allowNull: true,
+                unique: true,
+            },
             phone: {
                 type: STRING,
-                allowNull: false,
+                allowNull: true,
                 unique: true,
             },
             password: {
@@ -67,7 +72,7 @@ export class UserPostgresTable extends BasePostgresTable {
             createdBy: {
                 type: INTEGER,
                 field: 'created_by',
-                allowNull: false,
+                allowNull: true,
             },
             updatedBy: {
                 type: INTEGER,

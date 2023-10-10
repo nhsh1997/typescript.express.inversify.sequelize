@@ -5,10 +5,11 @@ import {
 import {
   inject, namedInject,
   singletonProvide,
+    interfaces,
 } from '@api/infrastructure/ioc';
 import { ILogger } from '@shared-library/utils/logger';
 import {AuthRouter} from "@api/infrastructure/http/router/auth/auth.router";
-import {IAuthController} from "@api/delivery";
+import {IAuthController, IGenerateTokenInput, IGenerateTokenOutput} from "@api/delivery";
 
 @singletonProvide(API_TYPES.ROUTER)
 export class LoginRouter extends AuthRouter {
@@ -16,11 +17,10 @@ export class LoginRouter extends AuthRouter {
   private controller: IAuthController;
 
   @inject(API_INPUT.GENERATE_TOKEN)
-  private input;
+  private input: interfaces.Newable<IGenerateTokenInput>;
 
   @inject(API_OUTPUT.GENERATE_TOKEN)
-  private output;
-
+  private output: interfaces.Newable<IGenerateTokenOutput>;
 
   constructor(
     @inject(API_TYPES.LOGGER)
@@ -45,6 +45,7 @@ export class LoginRouter extends AuthRouter {
         `${req.method}::${this.path} comming:`,
       );
 
+      // @ts-ignore
       await this.controller.generateToken(new this.input(req), new this.output(res));
     });
   }

@@ -44,4 +44,5 @@ export const TYPES = {
   TAB: Symbol.for('TAB'),
   PLATFORM_PARSE: Symbol.for('PLATFORM_PARSE'),
   IP_HELPER: Symbol.for('IP_HELPER'),
+  HTTP_CONTEXT: Symbol.for('HTTP_CONTEXT')
 };

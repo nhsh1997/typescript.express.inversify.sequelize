@@ -3,8 +3,8 @@ export * from '@shared-library/base/repository/mapper';
 export * from '@shared-library/base/repository/base-postgres.repository';
 
 export interface IReadableRepository<T> {
-  findAll: () => Promise<T[]>;
-  findById: (id: string | number) => Promise<T>;
+  findAll: () => Promise<T[] | null>;
+  findById: (id: string | number) => Promise<T | null>;
 }
 
 export interface IWritableRepository<T> {

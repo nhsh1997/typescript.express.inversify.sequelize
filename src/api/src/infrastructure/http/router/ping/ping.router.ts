@@ -1,13 +1,14 @@
-import { API_TYPES } from '@api/const';
+import { API_NAMES, API_TYPES } from '@api/const';
 import {
   ApiRouter,
   IRouterValidator,
 } from '@api/infrastructure/http/router';
 import {
-  inject,
+  inject, namedInject,
   singletonProvide,
 } from '@api/infrastructure/ioc';
 import { ILogger } from '@shared-library/utils/logger';
+import {IAuthenticatorMiddleware} from "@api/infrastructure";
 
 @singletonProvide(API_TYPES.ROUTER)
 export class PingRouter extends ApiRouter {
@@ -16,6 +17,8 @@ export class PingRouter extends ApiRouter {
     logger: ILogger,
     @inject(API_TYPES.ROUTER_VALIDATOR)
     validator: IRouterValidator,
+    @namedInject(API_TYPES.HTTP_HANDLER, API_NAMES.AUTHENTICATOR)
+    private authenticator: IAuthenticatorMiddleware
   ) {
     super(logger, validator);
     this.stack.push(PingRouter.prefix);
@@ -29,12 +32,12 @@ export class PingRouter extends ApiRouter {
   id = Symbol.for('PING_ROUTER');
 
   private ping() {
-    this.router.get(`${this.path}`, (req, res) => {
+    this.router.get(`${this.path}`, this.authenticator.authenticate, (req, res) => {
       this.log.info(
         `${req.method}::${this.path} comming:`,
         this.getContext(req),
       );
-      res.json('Ok');
+      res.json('Pong');
     });
   }
 }

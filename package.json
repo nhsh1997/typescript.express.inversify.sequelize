@@ -6,7 +6,9 @@
     "src/*"
   ],
   "scripts": {
-    "dev": "ts-node -r tsconfig-paths/register src/api/server.ts",
+    "dev": "nodemon -r tsconfig-paths/register src/api/index.ts",
+    "build": "tsc --outDir dist",
+    "start:api": "ts-node -r tsconfig-paths/register dist/api",
     "db:migrate": "sequelize-cli --options-path .sequelizerc db:migrate",
     "db:migrate:undo": "sequelize-cli --options-path .sequelizerc db:migrate:undo",
     "migration:create": "sequelize-cli migration:generate --name",
@@ -19,7 +21,9 @@
   "license": "ISC",
   "dependencies": {
     "api": "^1.0.0",
+    "nodemon": "^3.0.1",
     "sequelize-cli": "^6.6.1",
-    "shared-library": "^1.0.0"
+    "shared-library": "^1.0.0",
+    "tslib": "^2.6.1"
   }
 }

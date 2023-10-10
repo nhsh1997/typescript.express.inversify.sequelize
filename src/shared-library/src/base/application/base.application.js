@@ -5,25 +5,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseApplication = void 0;
 const const_1 = require("@shared-library/const");
 const ioc_1 = require("@shared-library/ioc");
-let BaseApplication = class BaseApplication {
+let BaseApplication = exports.BaseApplication = class BaseApplication {
     get log() {
         return this.logger.get(Symbol.keyFor(const_1.LOGGER.APPLICATION).toLowerCase(), Symbol.keyFor(this.id).toLowerCase());
     }
 };
 __decorate([
-    ioc_1.inject(const_1.TYPES.CONFIG)
+    (0, ioc_1.inject)(const_1.TYPES.CONFIG),
+    __metadata("design:type", Object)
 ], BaseApplication.prototype, "config", void 0);
 __decorate([
-    ioc_1.inject(const_1.TYPES.DEBUGGER)
+    (0, ioc_1.inject)(const_1.TYPES.DEBUGGER),
+    __metadata("design:type", Object)
 ], BaseApplication.prototype, "debug", void 0);
 __decorate([
-    ioc_1.inject(const_1.TYPES.LOGGER)
+    (0, ioc_1.inject)(const_1.TYPES.LOGGER),
+    __metadata("design:type", Object)
 ], BaseApplication.prototype, "logger", void 0);
-BaseApplication = __decorate([
-    ioc_1.injectable()
+exports.BaseApplication = BaseApplication = __decorate([
+    (0, ioc_1.injectable)()
 ], BaseApplication);
-exports.BaseApplication = BaseApplication;

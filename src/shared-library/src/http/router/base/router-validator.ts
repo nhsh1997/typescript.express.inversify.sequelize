@@ -24,15 +24,15 @@ export class RouterValidator {
 
   get validate() {
     return (req: Request, res: Response, next: NextFunction) => {
-      const shemaId = [req.method, req.route.path].join('::');
+      const schemaId = [req.method, req.route.path].join('::');
 
       const data = { ...req.params, ...req.body, ...req.query };
 
-      const { valid, errors } = this.validator.validate(shemaId, data);
+      const { valid, errors } = this.validator.validate(schemaId, data);
 
       if (!valid) {
         res.json({ status: 400, messages: errors });
-        this.log.error(`shemaId: ${shemaId}: "${errors}" -`, data);
+        this.log.error(`schemaId: ${schemaId}: "${errors}" -`, data);
         return;
       }
 

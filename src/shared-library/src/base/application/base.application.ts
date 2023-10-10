@@ -23,8 +23,8 @@ export abstract class BaseApplication implements IApplication {
 
     get log(): ILog {
         return this.logger.get(
-            Symbol.keyFor(LOGGER.APPLICATION).toLowerCase(),
-            Symbol.keyFor(this.id).toLowerCase(),
+            Symbol.keyFor(LOGGER.APPLICATION)!.toLowerCase(),
+            Symbol.keyFor(this.id)!.toLowerCase(),
         );
     }
 

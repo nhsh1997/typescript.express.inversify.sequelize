@@ -22,7 +22,6 @@ export class ApiApplication extends BaseApplication {
     try {
       await this.postgres.authenticate();
     } catch (error: any) {
-      console.log(error);
       this.log.error(error.message);
       process.exit();
     }
@@ -31,6 +30,6 @@ export class ApiApplication extends BaseApplication {
   async start() {
     const port = Number(process.env.PORT) || (this.config.get('api.port') as number);
     await this.http.listen(port);
-    this.log.error(`SERVER LISTENING ${port}`);
+    this.log.info(`SERVER LISTENING ${port}`);
   }
 }

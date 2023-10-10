@@ -32,11 +32,10 @@ export class GenerateTokenUseCase extends BaseUseCase implements IUseCase<IGener
         const token = this.jwtHelper.signin({
             id: user.id,
             email: user.email,
-            password: user.password,
+            phone: user.phone,
             firstName: user.firstName,
             lastName: user.lastName,
             isSuperAdmin: user.isSuperAdmin,
-            isSwitchedAccount: false,
         });
 
         return {

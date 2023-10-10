@@ -14,6 +14,10 @@ export class UserDomain extends BaseDomain<IUserDomain> implements IUserDomain {
         return this.context.email;
     }
 
+    get username() {
+        return this.context.username;
+    }
+
     get firstName() {
         return this.context.firstName;
     }
@@ -29,7 +33,7 @@ export class UserDomain extends BaseDomain<IUserDomain> implements IUserDomain {
     }
 
     get phone() {
-        return this.context.password;
+        return this.context.phone;
     }
 
     get status() {

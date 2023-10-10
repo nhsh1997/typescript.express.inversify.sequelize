@@ -1,7 +1,7 @@
 {
   "api": {
     "domain": "localhost",
-    "port": 3002
+    "port": 3000
   },
   "debug": "auth",
   "log": {
@@ -54,7 +54,7 @@
   "postgres": {
     "username": "postgres",
     "password": "hoangdeptrai",
-    "database": "auth_service",
+    "database": "kho_muc",
     "host": "localhost",
     "dialect": "postgres",
     "logging": true

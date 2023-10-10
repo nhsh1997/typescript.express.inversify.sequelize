@@ -22,6 +22,11 @@ module.exports = {
         allowNull: false,
         unique: true
       },
+      username: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+        unique: true
+      },
       phone: {
         type: Sequelize.STRING(100),
         allowNull: true,
@@ -42,7 +47,7 @@ module.exports = {
         defaultValue: 1
       },
       created_by: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER(10).UNSIGNED,
         references: {
           model: 'users',

@@ -8,18 +8,18 @@ import {API_TYPES} from "@api/const";
 export class UserMapper extends BaseMapper<IUserDomain> {
   constructor(
     @inject(API_DOMAINS.USER)
-    Audience: interfaces.Newable<IUserDomain>,
+    User: interfaces.Newable<IUserDomain>,
   ) {
-    super(Audience);
+    super(User);
   }
 
   toEntity(data: any) {
-    if (!data) return null;
     const {
       id,
       firstName,
       lastName,
       email,
+      username,
       isSuperAdmin,
       phone,
       status,
@@ -31,6 +31,7 @@ export class UserMapper extends BaseMapper<IUserDomain> {
       firstName,
       lastName,
       email,
+      username,
       isSuperAdmin,
       phone,
       status,
@@ -46,6 +47,7 @@ export class UserMapper extends BaseMapper<IUserDomain> {
       firstName,
       lastName,
       email,
+      username,
       isSuperAdmin,
       phone,
       status,
@@ -57,6 +59,7 @@ export class UserMapper extends BaseMapper<IUserDomain> {
       id,
       firstName,
       lastName,
+      username,
       email,
       password,
       isSuperAdmin,

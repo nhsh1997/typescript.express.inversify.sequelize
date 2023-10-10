@@ -8,6 +8,7 @@ import {API_DOMAINS} from "@api/const/domain";
 import {IMapper} from "@shared-library/base/repository";
 export interface IUserDBRepository extends IRepository<IUserDomain> {
     findByEmail(email: string): Promise<IUserDomain>;
+    findByUsername(username: string): Promise<IUserDomain>;
 }
 
 @singletonNamedProvide(API_TYPES.REPOSITORY, API_TABLES.USER)
@@ -28,6 +29,16 @@ export class UserPostgresRepository extends BasePostgresRepository<IUserDomain> 
             }
         });
         return this.mapper.toPrivateEntity(record);
+    }
+
+    async findByUsername(username: string): Promise<IUserDomain> {
+        const record = await this.model.findOne({
+            where: {
+                username
+            }
+        });
+
+        return this.mapper.toJSON(record);
     }
 
 }

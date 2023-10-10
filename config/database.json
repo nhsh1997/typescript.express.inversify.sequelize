@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "hoangdeptrai",
-    "database": "auth_service",
+    "database": "kho_muc",
     "host": "localhost",
     "dialect": "postgres"
   },
